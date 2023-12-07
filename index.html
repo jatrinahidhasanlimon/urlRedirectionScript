@@ -20,19 +20,19 @@
                     if (decodedPartParsedIntoInteger) {
                         let newUrl = 'https://rental.jatriweb.team/trip-bidding/' + decodedPartParsedIntoInteger;
                         console.log('redirect url', newUrl)
-                        window.location.href = newUrl;
+                        return window.location.href = newUrl;
                     }
-                    window.location.href = 'https://rental.jatriweb.team/'; // if failed to parse
+                    return window.location.href = 'https://rental.jatriweb.team/'; // if failed to parse
                 } catch (err) {
                     console.log('failed to decode')
-                    window.location.href = 'https://rental.jatriweb.team/'; // if any exception occurs
+                    return window.location.href = 'https://rental.jatriweb.team/'; // if any exception occurs
                 }
             }
-            window.location.href = 'https://rental.jatriweb.team/'; // if trip-bidding part missing in url
+            return window.location.href = 'https://rental.jatriweb.team/'; // if trip-bidding part missing in url
         }
 
         function redirectBasedOnCurrentUrlPartner(url) {
-            window.location.href = 'https://rental.jatriweb.team/';
+            return window.location.href = 'https://rental.jatriweb.team/';
         }
 
         try {
