@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1 style="text-align: center;">Welcome To Jatru</h1>
+    <h1 style="text-align: center;">Welcome To Jatri</h1>
     <script type="text/javascript">
 
         function redirectBasedOnCurrentUrlUser(url) {
@@ -22,8 +22,10 @@
                         console.log('redirect url', newUrl)
                         window.location.href = newUrl;
                     }
+                    window.location.href = 'https://rental.jatriweb.team/'; // if failed to parse
                 } catch (err) {
                     console.log('failed to decode')
+                    window.location.href = 'https://rental.jatriweb.team/'; // if any exception occurs
                 }
             }
         }
