@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jatri</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Welcome To Jatru</h1>
+    <script type="text/javascript">
+
+        function redirectBasedOnCurrentUrlUser(url) {
+            if (url.pathname.includes('/trip-bidding/')) {
+                let encodedPart = decodeURIComponent(url.pathname.split('/trip-bidding/')[1]); // Extract the base64-encoded part after "trip-bidding/"
+                try {
+                    let decodedPart = atob(encodedPart);
+                    decodedPartParsedIntoInteger = parseInt(decodedPart);
+                    if (decodedPartParsedIntoInteger) {
+                        let newUrl = 'https://rental.jatriweb.team/trip-bidding/' + decodedPartParsedIntoInteger;
+                        console.log('redirect url', newUrl)
+                        window.location.href = newUrl;
+                    }
+                } catch (err) {
+                    console.log('failed to decode')
+                }
+            }
+        }
+
+        function redirectBasedOnCurrentUrlPartner(url) {
+            window.location.href = 'https://rental.jatriweb.team/';
+        }
+
+        try {
+            let currentUrl = window.location.href; // Use appropriate method in your context
+            let url = new URL(currentUrl); // Use the URL constructor to parse the URL
+            var subdomain = url.hostname.split('.')[0];
+            switch (subdomain) {
+                case 'uclick':
+                    redirectBasedOnCurrentUrlUser(url);
+                    break;
+                case 'pclick':
+                    redirectBasedOnCurrentUrlPartner(url);
+                    break;
+                default:
+                    console.log("Invalid subdomain");
+            }
+        } catch (err) {
+            console.log('unknown subdomain or url');
+        }
+    </script>
+</body>
+
+</html>
