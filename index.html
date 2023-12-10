@@ -14,8 +14,7 @@
             try {
                 if (url.pathname.includes("/trip-bidding/")) {
                     let encodedPart = decodeURIComponent(url.pathname.split("/trip-bidding/")[1]); // Extract the base64-encoded part after "trip-bidding/"
-                    let decodedPart = atob(encodedPart);
-                    decodedPartParsedIntoInteger = parseInt(decodedPart);
+                    decodedPartParsedIntoInteger = parseInt(encodedPart, 36);
                     if (decodedPartParsedIntoInteger) {
                         let newUrl = "https://rental.jatriweb.team/trip-bidding/" + decodedPartParsedIntoInteger;
                         console.log("redirect url", newUrl);
